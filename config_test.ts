@@ -15,12 +15,6 @@ function toISOMonthString(date: Date): string {
   return `${year}-${month}`;
 }
 
-function assertTimeMsIsUTCMonth(timeMs: number, context: string): Date {
-  let date = new Date(timeMs);
-  assertThat(timeMs, eq(new Date(toISOMonthString(date)).valueOf()), context);
-  return date;
-}
-
 class MonthsAreConsecutive implements TestCase {
   public constructor(
     public name: string,
@@ -32,31 +26,20 @@ class MonthsAreConsecutive implements TestCase {
       gt(0),
       `number of datedAmounts`,
     );
-    let startMonthMs = this.datedPrice.datedAmounts[0].startMonthMs;
-    assertThat(startMonthMs, eq(0), "datedAmounts[0].startMonthMs");
-    let lastEndMonthMs = this.datedPrice.datedAmounts[0].endMonthMs;
+    let startMonth = this.datedPrice.datedAmounts[0].startMonth;
+    assertThat(startMonth, eq("1970-01"), "datedAmounts[0].startMonth");
+    let lastEndMonth = this.datedPrice.datedAmounts[0].endMonth;
     for (let i = 1; i < this.datedPrice.datedAmounts.length; i++) {
-      let lastEndMonth = assertTimeMsIsUTCMonth(
-        lastEndMonthMs,
-        `datedAmount[${i - 1}].endMonthMs`,
-      );
-      assertTimeMsIsUTCMonth(
-        this.datedPrice.datedAmounts[i].startMonthMs,
-        `datedAmount[${i}].startMonthMs`,
-      );
-      lastEndMonth.setUTCMonth(lastEndMonth.getUTCMonth() + 1);
+      let date = new Date(lastEndMonth);
+      date.setUTCMonth(date.getUTCMonth() + 1);
       assertThat(
-        lastEndMonth.valueOf(),
-        eq(this.datedPrice.datedAmounts[i].startMonthMs),
-        `datedAmount[${i - 1}].endMonthMs + 1 month`,
+        toISOMonthString(date),
+        eq(this.datedPrice.datedAmounts[i].startMonth),
+        `datedAmount[${i - 1}].endMonth + 1 month`,
       );
-      lastEndMonthMs = this.datedPrice.datedAmounts[i].endMonthMs;
+      lastEndMonth = this.datedPrice.datedAmounts[i].endMonth;
     }
-    assertThat(
-      lastEndMonthMs,
-      eq(Number.MAX_SAFE_INTEGER),
-      "datedAmounts[last].endMonthMs",
-    );
+    assertThat(lastEndMonth, eq("9999-12"), "datedAmounts[last].endMonth");
   }
 }
 

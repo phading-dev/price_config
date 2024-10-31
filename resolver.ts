@@ -1,13 +1,14 @@
 import { DatedPrice, Price } from "@phading/price";
 
-export function resolvePriceOfTimeMs(
+export function resolvePriceOfMonth(
   datedPrice: DatedPrice,
-  timeMs: number,
+  monthISOString: string,
 ): Price {
+  let timeMs = new Date(monthISOString).valueOf();
   for (let datedAmount of datedPrice.datedAmounts) {
     if (
-      datedAmount.startMonthMs <= timeMs &&
-      timeMs <= datedAmount.endMonthMs
+      new Date(datedAmount.startMonth).valueOf() <= timeMs &&
+      timeMs <= new Date(datedAmount.endMonth).valueOf()
     ) {
       return {
         productType: datedPrice.productType,
@@ -17,11 +18,4 @@ export function resolvePriceOfTimeMs(
     }
   }
   throw new Error(`${timeMs} doesn't match any configured price.`);
-}
-
-export function resolvePriceOfMonth(
-  datedPrice: DatedPrice,
-  monthISOString: string,
-): Price {
-  return resolvePriceOfTimeMs(datedPrice, new Date(monthISOString).valueOf());
 }

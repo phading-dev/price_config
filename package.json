@@ -1,7 +1,7 @@
 {
   "name": "@phading/price_config",
-  "version": "0.1.0",
-  "description": "Price.",
+  "version": "0.1.1",
+  "description": "Price config.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/phading-dev/price_config.git"
@@ -28,7 +28,7 @@
     "typescript": "^5.6.2"
   },
   "dependencies": {
-    "@phading/price": "^0.2.1",
+    "@phading/price": "^0.2.3",
     "@selfage/message": "^3.5.5"
   }
 }
