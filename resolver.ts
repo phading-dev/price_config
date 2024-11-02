@@ -13,7 +13,7 @@ export function resolvePriceOfMonth(
       return {
         productType: datedPrice.productType,
         money: datedAmount.money,
-        divideBy: datedAmount.divideBy,
+        description: datedAmount.description,
       };
     }
   }

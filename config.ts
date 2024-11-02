@@ -1,6 +1,6 @@
 import { DatedPrice, ProductType } from "@phading/price";
 
-// $0.26 per 10 GiB per month (30 days) to match https://cloud.google.com/storage/pricing#multi-regions.
+// To match https://cloud.google.com/storage/pricing#multi-regions.
 export let STORAGE_RPICE: DatedPrice = {
   productType: ProductType.STORAGE,
   datedAmounts: [
@@ -9,13 +9,13 @@ export let STORAGE_RPICE: DatedPrice = {
         currency: "USD",
         amount: 26,
       },
-      divideBy: 10 * 1024 * 1024 * 30 * 24 * 60, // KiB * minutes
+      description: "Storage at $0.26 per 10 GiB per month (30 days)",
       startMonth: "1970-01",
       endMonth: "9999-12",
     },
   ],
 };
-// $0.02 per 1 GiB to match https://cloud.google.com/storage/pricing#inter-region-replication.
+// To match https://cloud.google.com/storage/pricing#inter-region-replication.
 export let UPLOAD_PRICE: DatedPrice = {
   productType: ProductType.UPLAOD,
   datedAmounts: [
@@ -24,13 +24,13 @@ export let UPLOAD_PRICE: DatedPrice = {
         currency: "USD",
         amount: 2,
       },
-      divideBy: 1024 * 1024 * 1024, // bytes
+      description: "Upload at $0.02 per 1 GiB",
       startMonth: "1970-01",
       endMonth: "9999-12",
     },
   ],
 };
-// $0.12 per 1 GiB to match https://cloud.google.com/vpc/network-pricing.
+// To match https://cloud.google.com/vpc/network-pricing.
 export let NETWORK_RPICE: DatedPrice = {
   productType: ProductType.NETWORK,
   datedAmounts: [
@@ -39,13 +39,12 @@ export let NETWORK_RPICE: DatedPrice = {
         currency: "USD",
         amount: 12,
       },
-      divideBy: 1024 * 1024 * 1024, // bytes
+      description: "Network delivery at $0.12 per 1 GiB",
       startMonth: "1970-01",
       endMonth: "9999-12",
     },
   ],
 };
-// $0.10 per hour.
 export let SHOW_PRICE: DatedPrice = {
   productType: ProductType.SHOW,
   datedAmounts: [
@@ -54,13 +53,12 @@ export let SHOW_PRICE: DatedPrice = {
         currency: "USD",
         amount: 10,
       },
-      divideBy: 3600, // seconds
+      description: "Watch shows at $0.10 per hour",
       startMonth: "1970-01",
       endMonth: "9999-12",
     },
   ],
 };
-// 20% cut of SHOW_PRICE.
 export let PLATFORM_CUT_SHOW_PRICE: DatedPrice = {
   productType: ProductType.PLATFORM_CUT_SHOW,
   datedAmounts: [
@@ -69,7 +67,7 @@ export let PLATFORM_CUT_SHOW_PRICE: DatedPrice = {
         currency: "USD",
         amount: 2,
       },
-      divideBy: 3600, // seconds
+      description: "20% service fees for shows watched",
       startMonth: "1970-01",
       endMonth: "9999-12",
     },

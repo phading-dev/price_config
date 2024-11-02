@@ -21,7 +21,7 @@ TEST_RUNNER.run({
                 currency: "USD",
                 amount: 10,
               },
-              divideBy: 3600,
+              description: "Watch shows at $0.10 per hour",
             },
             PRICE,
           ),
