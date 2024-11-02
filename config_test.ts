@@ -44,7 +44,7 @@ class MonthsAreConsecutive implements TestCase {
 }
 
 TEST_RUNNER.run({
-  name: "PriceConfigTest",
+  name: "ConfigTest",
   cases: [
     new MonthsAreConsecutive("StoragePriceMonthsAreConsecutive", STORAGE_RPICE),
     new MonthsAreConsecutive("UploadPriceMonthsAreConsecutive", UPLOAD_PRICE),
