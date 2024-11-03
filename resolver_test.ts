@@ -11,17 +11,15 @@ TEST_RUNNER.run({
     {
       name: "Default",
       execute: () => {
-        let price = resolvePriceOfMonth(SHOW_PRICE, "2024-10");
+        let price = resolvePriceOfMonth(SHOW_PRICE, "USD", "2024-10");
         assertThat(
           price,
           eqMessage(
             {
               productType: ProductType.SHOW,
-              money: {
-                currency: "USD",
-                amount: 10,
-              },
-              description: "Watch shows at $0.10 per hour",
+              description: "shows watched per hour",
+              currency: "USD",
+              amount: 10,
             },
             PRICE,
           ),

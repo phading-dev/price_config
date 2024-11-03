@@ -1,75 +1,85 @@
-import { DatedPrice, ProductType } from "@phading/price";
+import { PriceConfig, ProductType } from "@phading/price";
 
 // To match https://cloud.google.com/storage/pricing#multi-regions.
-export let STORAGE_RPICE: DatedPrice = {
+export let STORAGE_RPICE: PriceConfig = {
   productType: ProductType.STORAGE,
-  datedAmounts: [
+  description: "storage per 10 GiB per month (30 days)",
+  pricesInCurrency: [
     {
-      money: {
-        currency: "USD",
-        amount: 26,
-      },
-      description: "Storage at $0.26 per 10 GiB per month (30 days)",
-      startMonth: "1970-01",
-      endMonth: "9999-12",
+      currency: "USD",
+      pricesInMonth: [
+        {
+          amount: 26,
+          startMonth: "1970-01",
+          endMonth: "9999-12",
+        },
+      ],
     },
   ],
 };
 // To match https://cloud.google.com/storage/pricing#inter-region-replication.
-export let UPLOAD_PRICE: DatedPrice = {
+export let UPLOAD_PRICE: PriceConfig = {
   productType: ProductType.UPLAOD,
-  datedAmounts: [
+  description: "uploaded content per 1 GiB",
+  pricesInCurrency: [
     {
-      money: {
-        currency: "USD",
-        amount: 2,
-      },
-      description: "Upload at $0.02 per 1 GiB",
-      startMonth: "1970-01",
-      endMonth: "9999-12",
+      currency: "USD",
+      pricesInMonth: [
+        {
+          amount: 2,
+          startMonth: "1970-01",
+          endMonth: "9999-12",
+        },
+      ],
     },
   ],
 };
 // To match https://cloud.google.com/vpc/network-pricing.
-export let NETWORK_RPICE: DatedPrice = {
+export let NETWORK_RPICE: PriceConfig = {
   productType: ProductType.NETWORK,
-  datedAmounts: [
+  description: "network delivery per 1 GiB",
+  pricesInCurrency: [
     {
-      money: {
-        currency: "USD",
-        amount: 12,
-      },
-      description: "Network delivery at $0.12 per 1 GiB",
-      startMonth: "1970-01",
-      endMonth: "9999-12",
+      currency: "USD",
+      pricesInMonth: [
+        {
+          amount: 12,
+          startMonth: "1970-01",
+          endMonth: "9999-12",
+        },
+      ],
     },
   ],
 };
-export let SHOW_PRICE: DatedPrice = {
+export let SHOW_PRICE: PriceConfig = {
   productType: ProductType.SHOW,
-  datedAmounts: [
+  description: "shows watched per hour",
+  pricesInCurrency: [
     {
-      money: {
-        currency: "USD",
-        amount: 10,
-      },
-      description: "Watch shows at $0.10 per hour",
-      startMonth: "1970-01",
-      endMonth: "9999-12",
+      currency: "USD",
+      pricesInMonth: [
+        {
+          amount: 10,
+          startMonth: "1970-01",
+          endMonth: "9999-12",
+        },
+      ],
     },
   ],
 };
-export let PLATFORM_CUT_SHOW_PRICE: DatedPrice = {
+export let PLATFORM_CUT_SHOW_PRICE: PriceConfig = {
   productType: ProductType.PLATFORM_CUT_SHOW,
-  datedAmounts: [
+  description: "platform fee for shows watched per hour",
+  pricesInCurrency: [
     {
-      money: {
-        currency: "USD",
-        amount: 2,
-      },
-      description: "20% service fees for shows watched",
-      startMonth: "1970-01",
-      endMonth: "9999-12",
+      currency: "USD",
+      pricesInMonth: [
+        {
+          amount: 2,
+          startMonth: "1970-01",
+          endMonth: "9999-12",
+        },
+      ],
     },
   ],
 };

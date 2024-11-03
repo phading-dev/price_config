@@ -1,21 +1,29 @@
-import { DatedPrice, Price } from "@phading/price";
+import { Price, PriceConfig } from "@phading/price";
 
 export function resolvePriceOfMonth(
-  datedPrice: DatedPrice,
+  priceConfig: PriceConfig,
+  currency: string,
   monthISOString: string,
 ): Price {
-  let timeMs = new Date(monthISOString).valueOf();
-  for (let datedAmount of datedPrice.datedAmounts) {
-    if (
-      new Date(datedAmount.startMonth).valueOf() <= timeMs &&
-      timeMs <= new Date(datedAmount.endMonth).valueOf()
-    ) {
-      return {
-        productType: datedPrice.productType,
-        money: datedAmount.money,
-        description: datedAmount.description,
-      };
+  for (let priceInCurrency of priceConfig.pricesInCurrency) {
+    if (priceInCurrency.currency === currency) {
+      let timeMs = new Date(monthISOString).valueOf();
+      for (let priceInMonth of priceInCurrency.pricesInMonth) {
+        if (
+          new Date(priceInMonth.startMonth).valueOf() <= timeMs &&
+          timeMs <= new Date(priceInMonth.endMonth).valueOf()
+        ) {
+          return {
+            productType: priceConfig.productType,
+            description: priceConfig.description,
+            currency: priceInCurrency.currency,
+            amount: priceInMonth.amount,
+          };
+        }
+      }
     }
   }
-  throw new Error(`${timeMs} doesn't match any configured price.`);
+  throw new Error(
+    `Currency ${currency} and month ${monthISOString} doesn't match any configured price for product ${priceConfig.productType}.`,
+  );
 }
