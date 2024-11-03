@@ -1,5 +1,4 @@
-import { SHOW_PRICE } from "./config";
-import { resolvePriceOfMonth } from "./resolver";
+import { resolvePrice } from "./resolver";
 import { PRICE, ProductType } from "@phading/price";
 import { eqMessage } from "@selfage/message/test_matcher";
 import { assertThat } from "@selfage/test_matcher";
@@ -11,15 +10,17 @@ TEST_RUNNER.run({
     {
       name: "Default",
       execute: () => {
-        let price = resolvePriceOfMonth(SHOW_PRICE, "USD", "2024-10");
+        let price = resolvePrice(ProductType.SHOW, "USD", "2024-10");
         assertThat(
           price,
           eqMessage(
             {
               productType: ProductType.SHOW,
-              description: "shows watched per hour",
+              description: "shows watched",
               currency: "USD",
               amount: 10,
+              divideBy: 3600,
+              unit: "seconds",
             },
             PRICE,
           ),
