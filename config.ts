@@ -3,7 +3,7 @@ import { PriceConfig, ProductType } from "@phading/price";
 export let CONFIG: PriceConfig = {
   pricesOfProduct: [
     {
-      // To match https://cloud.google.com/storage/pricing#multi-regions.
+      // To match Cloudflare R2 storage https://developers.cloudflare.com/r2/pricing/#r2-pricing without free tier nor cost of operations.
       productType: ProductType.STORAGE,
       description: "storage per 10 GiB per month (30 days)",
       pricesInCurrency: [
@@ -11,7 +11,7 @@ export let CONFIG: PriceConfig = {
           currency: "USD",
           pricesInMonth: [
             {
-              amount: 26,
+              amount: 15,
               divideBy: 10 * 1024 * 30 * 24,
               unit: "MiB x hour",
               startMonth: "1970-01",
@@ -22,28 +22,9 @@ export let CONFIG: PriceConfig = {
       ],
     },
     {
-      // To match https://cloud.google.com/storage/pricing#inter-region-replication.
+      // To match egress cost https://cloud.google.com/vpc/network-pricing, incurred by copy from GCS to Cloudflare R2.
       productType: ProductType.UPLAOD,
-      description: "uploaded content",
-      pricesInCurrency: [
-        {
-          currency: "USD",
-          pricesInMonth: [
-            {
-              amount: 2,
-              divideBy: 1024,
-              unit: "MiB",
-              startMonth: "1970-01",
-              endMonth: "9999-12",
-            },
-          ],
-        },
-      ],
-    },
-    {
-      // To match https://cloud.google.com/vpc/network-pricing.
-      productType: ProductType.NETWORK,
-      description: "network delivery per 1 GiB",
+      description: "uploaded per 1 GiB",
       pricesInCurrency: [
         {
           currency: "USD",
@@ -60,8 +41,27 @@ export let CONFIG: PriceConfig = {
       ],
     },
     {
+      // No egress cost for Cloudflare R2 https://developers.cloudflare.com/r2/pricing/#r2-pricing.
+      productType: ProductType.NETWORK,
+      description: "network delivery per 1 GiB",
+      pricesInCurrency: [
+        {
+          currency: "USD",
+          pricesInMonth: [
+            {
+              amount: 0,
+              divideBy: 1024,
+              unit: "MiB",
+              startMonth: "1970-01",
+              endMonth: "9999-12",
+            },
+          ],
+        },
+      ],
+    },
+    {
       productType: ProductType.SHOW,
-      description: "shows watched",
+      description: "shows watched per hour",
       pricesInCurrency: [
         {
           currency: "USD",
@@ -79,7 +79,7 @@ export let CONFIG: PriceConfig = {
     },
     {
       productType: ProductType.PLATFORM_CUT_SHOW,
-      description: "platform fee for shows watched",
+      description: "platform fee for shows watched per hour",
       pricesInCurrency: [
         {
           currency: "USD",
