@@ -34,6 +34,7 @@ export function resolvePrice(
     currency: priceInCurrency.currency,
     amount: priceInMonth.amount,
     divideBy: priceInMonth.divideBy,
+    rounding: priceInMonth.rounding,
     unit: priceInMonth.unit,
   };
 }

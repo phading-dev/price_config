@@ -1,4 +1,4 @@
-import { PriceConfig, ProductType } from "@phading/price";
+import { PriceConfig, ProductType, RoundingType } from "@phading/price";
 
 export let CONFIG: PriceConfig = {
   pricesOfProduct: [
@@ -14,6 +14,7 @@ export let CONFIG: PriceConfig = {
               amount: 15,
               divideBy: 10 * 1024 * 30 * 24,
               unit: "MiB x hour",
+              rounding: RoundingType.CEIL,
               startMonth: "1970-01",
               endMonth: "9999-12",
             },
@@ -32,6 +33,7 @@ export let CONFIG: PriceConfig = {
             {
               amount: 12,
               divideBy: 1024,
+              rounding: RoundingType.CEIL,
               unit: "MiB",
               startMonth: "1970-01",
               endMonth: "9999-12",
@@ -51,6 +53,7 @@ export let CONFIG: PriceConfig = {
             {
               amount: 0,
               divideBy: 1024,
+              rounding: RoundingType.CEIL,
               unit: "MiB",
               startMonth: "1970-01",
               endMonth: "9999-12",
@@ -69,6 +72,7 @@ export let CONFIG: PriceConfig = {
             {
               amount: 10,
               divideBy: 3600,
+              rounding: RoundingType.CEIL,
               unit: "seconds",
               startMonth: "1970-01",
               endMonth: "9999-12",
@@ -78,15 +82,16 @@ export let CONFIG: PriceConfig = {
       ],
     },
     {
-      productType: ProductType.PLATFORM_CUT_SHOW,
-      description: "platform fee for shows watched per hour",
+      productType: ProductType.SHOW_PAYOUT,
+      description: "payout for shows watched per hour",
       pricesInCurrency: [
         {
           currency: "USD",
           pricesInMonth: [
             {
-              amount: 2,
+              amount: 8,
               divideBy: 3600,
+              rounding: RoundingType.FLOOR,
               unit: "seconds",
               startMonth: "1970-01",
               endMonth: "9999-12",
