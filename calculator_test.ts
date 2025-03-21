@@ -17,7 +17,7 @@ TEST_RUNNER.run({
       name: "Floor",
       execute: () => {
         let price = calculateMoney(
-          ProductID.SHOW_PAYOUT,
+          ProductID.SHOW_CREDIT,
           "USD",
           "2024-10",
           8000,

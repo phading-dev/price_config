@@ -1,3 +1,4 @@
+import { AmountType } from "@phading/price/amount_type";
 import { resolvePrice } from "./resolver";
 import { PRICE, ProductID, RoundingType } from "@phading/price";
 import { eqMessage } from "@selfage/message/test_matcher";
@@ -16,6 +17,7 @@ TEST_RUNNER.run({
           eqMessage(
             {
               productID: ProductID.SHOW,
+              amountType: AmountType.DEBIT,
               description: "shows watched per hour",
               currency: "USD",
               amount: 10,

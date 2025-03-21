@@ -30,6 +30,7 @@ export function resolvePrice(
   }
   return {
     productID: priceOfProduct.productID,
+    amountType: priceOfProduct.amountType,
     description: priceOfProduct.description,
     currency: priceInCurrency.currency,
     amount: priceInMonth.amount,
