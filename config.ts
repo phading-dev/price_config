@@ -1,10 +1,10 @@
-import { PriceConfig, ProductType, RoundingType } from "@phading/price";
+import { PriceConfig, ProductID, RoundingType } from "@phading/price";
 
 export let CONFIG: PriceConfig = {
   pricesOfProduct: [
     {
       // To match Cloudflare R2 storage https://developers.cloudflare.com/r2/pricing/#r2-pricing without free tier nor cost of operations.
-      productType: ProductType.STORAGE,
+      productID: ProductID.STORAGE,
       description: "storage per 10 GiB per month (30 days)",
       pricesInCurrency: [
         {
@@ -24,7 +24,7 @@ export let CONFIG: PriceConfig = {
     },
     {
       // To match egress cost https://cloud.google.com/vpc/network-pricing, incurred by copy from GCS to Cloudflare R2.
-      productType: ProductType.UPLAOD,
+      productID: ProductID.UPLAOD,
       description: "uploaded per 1 GiB",
       pricesInCurrency: [
         {
@@ -44,7 +44,7 @@ export let CONFIG: PriceConfig = {
     },
     {
       // No egress cost for Cloudflare R2 https://developers.cloudflare.com/r2/pricing/#r2-pricing.
-      productType: ProductType.NETWORK,
+      productID: ProductID.NETWORK,
       description: "network delivery per 1 GiB",
       pricesInCurrency: [
         {
@@ -63,7 +63,7 @@ export let CONFIG: PriceConfig = {
       ],
     },
     {
-      productType: ProductType.SHOW,
+      productID: ProductID.SHOW,
       description: "shows watched per hour",
       pricesInCurrency: [
         {
@@ -82,7 +82,7 @@ export let CONFIG: PriceConfig = {
       ],
     },
     {
-      productType: ProductType.SHOW_PAYOUT,
+      productID: ProductID.SHOW_PAYOUT,
       description: "payout for shows watched per hour",
       pricesInCurrency: [
         {

@@ -1,5 +1,5 @@
 import { calculateMoney } from "./calculator";
-import { ProductType } from "@phading/price";
+import { ProductID } from "@phading/price";
 import { assertThat, eq } from "@selfage/test_matcher";
 import { TEST_RUNNER } from "@selfage/test_runner";
 
@@ -9,7 +9,7 @@ TEST_RUNNER.run({
     {
       name: "Ceil",
       execute: () => {
-        let price = calculateMoney(ProductType.SHOW, "USD", "2024-10", 8000);
+        let price = calculateMoney(ProductID.SHOW, "USD", "2024-10", 8000);
         assertThat(price.amount, eq(23), "money");
       },
     },
@@ -17,7 +17,7 @@ TEST_RUNNER.run({
       name: "Floor",
       execute: () => {
         let price = calculateMoney(
-          ProductType.SHOW_PAYOUT,
+          ProductID.SHOW_PAYOUT,
           "USD",
           "2024-10",
           8000,

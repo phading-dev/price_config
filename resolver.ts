@@ -1,23 +1,23 @@
 import { CONFIG } from "./config";
-import { Price, PriceConfig, ProductType } from "@phading/price";
+import { Price, PriceConfig, ProductID } from "@phading/price";
 
 export function resolvePrice(
-  productType: ProductType,
+  productID: ProductID,
   currency: string,
   monthISOString: string,
   config: PriceConfig = CONFIG,
 ): Price {
   let priceOfProduct = config.pricesOfProduct.find(
-    (value) => value.productType === productType,
+    (value) => value.productID === productID,
   );
   if (!priceOfProduct) {
-    `Product ${ProductType[productType]} is not found in the config.`;
+    `Product ${ProductID[productID]} is not found in the config.`;
   }
   let priceInCurrency = priceOfProduct.pricesInCurrency.find(
     (value) => value.currency === currency,
   );
   if (!priceInCurrency) {
-    `Currency ${currency} is not found in the product ${ProductType[productType]}`;
+    `Currency ${currency} is not found in the product ${ProductID[productID]}`;
   }
   let timeMs = new Date(monthISOString).valueOf();
   let priceInMonth = priceInCurrency.pricesInMonth.find(
@@ -26,10 +26,10 @@ export function resolvePrice(
       timeMs <= new Date(value.endMonth).valueOf(),
   );
   if (!priceInMonth) {
-    `Month ${monthISOString} is not found in the product ${ProductType[productType]} and currency ${currency}.`;
+    `Month ${monthISOString} is not found in the product ${ProductID[productID]} and currency ${currency}.`;
   }
   return {
-    productType: priceOfProduct.productType,
+    productID: priceOfProduct.productID,
     description: priceOfProduct.description,
     currency: priceInCurrency.currency,
     amount: priceInMonth.amount,

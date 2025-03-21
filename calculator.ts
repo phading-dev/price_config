@@ -1,9 +1,9 @@
 import { CONFIG } from "./config";
 import { resolvePrice } from "./resolver";
-import { Price, PriceConfig, ProductType, RoundingType } from "@phading/price";
+import { Price, PriceConfig, ProductID, RoundingType } from "@phading/price";
 
 export function calculateMoney(
-  productType: ProductType,
+  productID: ProductID,
   currency: string,
   monthISOString: string,
   quantity: number,
@@ -12,7 +12,7 @@ export function calculateMoney(
   amount: number;
   price: Price;
 } {
-  let price = resolvePrice(productType, currency, monthISOString, config);
+  let price = resolvePrice(productID, currency, monthISOString, config);
   let amount = (quantity / price.divideBy) * price.amount;
   switch (price.rounding) {
     case RoundingType.CEIL:
