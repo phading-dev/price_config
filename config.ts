@@ -26,7 +26,7 @@ export let CONFIG: PriceConfig = {
     },
     {
       // To match egress cost https://cloud.google.com/vpc/network-pricing, incurred by copy from GCS to Cloudflare R2.
-      productID: ProductID.UPLAOD,
+      productID: ProductID.UPLOAD,
       amountType: AmountType.DEBIT,
       description: "uploaded per 1 GiB",
       pricesInCurrency: [
