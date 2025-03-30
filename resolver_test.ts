@@ -18,10 +18,10 @@ TEST_RUNNER.run({
             {
               productID: ProductID.SHOW,
               amountType: AmountType.DEBIT,
-              description: "shows watched per hour",
+              description: "shows watched",
               currency: "USD",
               amount: 10,
-              divideBy: 3600,
+              divideBy: 36000,
               rounding: RoundingType.CEIL,
               unit: "seconds",
             },

@@ -9,7 +9,7 @@ TEST_RUNNER.run({
     {
       name: "Ceil",
       execute: () => {
-        let price = calculateMoney(ProductID.SHOW, "USD", "2024-10", 8000);
+        let price = calculateMoney(ProductID.SHOW, "USD", "2024-10", 80000);
         assertThat(price.amount, eq(23), "money");
       },
     },
@@ -20,7 +20,7 @@ TEST_RUNNER.run({
           ProductID.SHOW_CREDIT,
           "USD",
           "2024-10",
-          8000,
+          80000,
         );
         assertThat(price.amount, eq(17), "money");
       },
