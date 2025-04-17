@@ -1,6 +1,6 @@
-import { AmountType } from "@phading/price/amount_type";
 import { resolvePrice } from "./resolver";
 import { PRICE, ProductID, RoundingType } from "@phading/price";
+import { AmountType } from "@phading/price/amount_type";
 import { eqMessage } from "@selfage/message/test_matcher";
 import { assertThat } from "@selfage/test_matcher";
 import { TEST_RUNNER } from "@selfage/test_runner";
@@ -20,7 +20,8 @@ TEST_RUNNER.run({
               amountType: AmountType.DEBIT,
               description: "shows watched",
               currency: "USD",
-              amount: 10,
+              centAmount: 10,
+              dollarAmount: 0.1,
               divideBy: 36000,
               rounding: RoundingType.CEIL,
               unit: "seconds",
