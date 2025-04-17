@@ -13,7 +13,7 @@ export let CONFIG: PriceConfig = {
           currency: "USD",
           pricesInMonth: [
             {
-              centAmount: 15,
+              amount: 15,
               divideBy: 10 * 1024 * 30 * 24, // 10 GiB per month (30 days)
               unit: "MiB x hour",
               rounding: RoundingType.CEIL,
@@ -34,7 +34,7 @@ export let CONFIG: PriceConfig = {
           currency: "USD",
           pricesInMonth: [
             {
-              centAmount: 12,
+              amount: 12,
               divideBy: 1024, // 1 GiB
               rounding: RoundingType.CEIL,
               unit: "MiB",
@@ -55,7 +55,7 @@ export let CONFIG: PriceConfig = {
           currency: "USD",
           pricesInMonth: [
             {
-              centAmount: 0,
+              amount: 0,
               divideBy: 1024, // 1 GiB
               rounding: RoundingType.CEIL,
               unit: "MiB",
@@ -75,7 +75,7 @@ export let CONFIG: PriceConfig = {
           currency: "USD",
           pricesInMonth: [
             {
-              centAmount: 10,
+              amount: 10,
               divideBy: 10 * 3600, // 10 hours
               rounding: RoundingType.CEIL,
               unit: "seconds",
@@ -95,7 +95,7 @@ export let CONFIG: PriceConfig = {
           currency: "USD",
           pricesInMonth: [
             {
-              centAmount: 8,
+              amount: 8,
               divideBy: 10 * 3600, // 10 hours
               rounding: RoundingType.FLOOR,
               unit: "seconds",

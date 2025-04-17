@@ -1,4 +1,3 @@
-import { DOLLAR_TO_CENTS } from "./amount_conversion";
 import { CONFIG } from "./config";
 import { resolvePrice } from "./resolver";
 import { Price, PriceConfig, ProductID, RoundingType } from "@phading/price";
@@ -10,18 +9,17 @@ export function calculateMoney(
   quantity: number,
   config: PriceConfig = CONFIG,
 ): {
-  centAmount: number;
-  dollarAmount: number;
+  amount: number;
   price: Price;
 } {
   let price = resolvePrice(productID, currency, monthISOString, config);
-  let centAmount = (quantity / price.divideBy) * price.centAmount;
+  let amount = (quantity / price.divideBy) * price.amount;
   switch (price.rounding) {
     case RoundingType.CEIL:
-      centAmount = Math.ceil(centAmount);
+      amount = Math.ceil(amount);
       break;
     case RoundingType.FLOOR:
-      centAmount = Math.floor(centAmount);
+      amount = Math.floor(amount);
       break;
     default:
       throw new Error(
@@ -29,8 +27,7 @@ export function calculateMoney(
       );
   }
   return {
-    centAmount,
-    dollarAmount: centAmount / DOLLAR_TO_CENTS.get(currency),
+    amount,
     price,
   };
 }

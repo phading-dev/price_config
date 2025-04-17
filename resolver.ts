@@ -1,4 +1,3 @@
-import { DOLLAR_TO_CENTS } from "./amount_conversion";
 import { CONFIG } from "./config";
 import { Price, PriceConfig, ProductID } from "@phading/price";
 
@@ -34,8 +33,7 @@ export function resolvePrice(
     amountType: priceOfProduct.amountType,
     description: priceOfProduct.description,
     currency: priceInCurrency.currency,
-    centAmount: priceInMonth.centAmount,
-    dollarAmount: priceInMonth.centAmount / DOLLAR_TO_CENTS.get(currency),
+    amount: priceInMonth.amount,
     divideBy: priceInMonth.divideBy,
     rounding: priceInMonth.rounding,
     unit: priceInMonth.unit,
