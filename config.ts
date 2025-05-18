@@ -15,7 +15,7 @@ export let CONFIG: PriceConfig = {
             {
               amount: 15,
               divideBy: 10 * 1024 * 30 * 24, // 10 GiB per month (30 days)
-              unit: "MiB x hour",
+              unit: "MIB_HOUR",
               rounding: RoundingType.CEIL,
               startMonth: "1970-01",
               endMonth: "9999-12",
@@ -37,7 +37,7 @@ export let CONFIG: PriceConfig = {
               amount: 12,
               divideBy: 1024, // 1 GiB
               rounding: RoundingType.CEIL,
-              unit: "MiB",
+              unit: "MIB",
               startMonth: "1970-01",
               endMonth: "9999-12",
             },
@@ -58,7 +58,7 @@ export let CONFIG: PriceConfig = {
               amount: 0,
               divideBy: 1024, // 1 GiB
               rounding: RoundingType.CEIL,
-              unit: "MiB",
+              unit: "MIB",
               startMonth: "1970-01",
               endMonth: "9999-12",
             },
@@ -78,7 +78,7 @@ export let CONFIG: PriceConfig = {
               amount: 10,
               divideBy: 10 * 3600, // 10 hours
               rounding: RoundingType.CEIL,
-              unit: "seconds",
+              unit: "SECOND",
               startMonth: "1970-01",
               endMonth: "9999-12",
             },
@@ -98,7 +98,7 @@ export let CONFIG: PriceConfig = {
               amount: 8,
               divideBy: 10 * 3600, // 10 hours
               rounding: RoundingType.FLOOR,
-              unit: "seconds",
+              unit: "SECOND",
               startMonth: "1970-01",
               endMonth: "9999-12",
             },

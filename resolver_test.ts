@@ -23,7 +23,7 @@ TEST_RUNNER.run({
               amount: 10,
               divideBy: 36000,
               rounding: RoundingType.CEIL,
-              unit: "seconds",
+              unit: "SECOND",
             },
             PRICE,
           ),
