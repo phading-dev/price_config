@@ -8,7 +8,7 @@ export let CONFIG: PriceConfig = {
       productID: ProductID.STORAGE,
       amountType: AmountType.DEBIT,
       description: "storage",
-      unit: "MIB_HOUR",
+      unit: "MiB x hour",
       rounding: RoundingType.CEIL,
       pricesInCurrency: [
         {
@@ -29,7 +29,7 @@ export let CONFIG: PriceConfig = {
       productID: ProductID.UPLOAD,
       amountType: AmountType.DEBIT,
       description: "upload",
-      unit: "MIB",
+      unit: "MiB",
       rounding: RoundingType.CEIL,
       pricesInCurrency: [
         {
@@ -50,7 +50,7 @@ export let CONFIG: PriceConfig = {
       productID: ProductID.NETWORK,
       amountType: AmountType.DEBIT,
       description: "network delivery",
-      unit: "MIB",
+      unit: "MiB",
       rounding: RoundingType.CEIL,
       pricesInCurrency: [
         {
@@ -70,7 +70,7 @@ export let CONFIG: PriceConfig = {
       productID: ProductID.SHOW,
       amountType: AmountType.DEBIT,
       description: "shows watched",
-      unit: "SECOND",
+      unit: "second",
       rounding: RoundingType.CEIL,
       pricesInCurrency: [
         {
@@ -90,7 +90,7 @@ export let CONFIG: PriceConfig = {
       productID: ProductID.SHOW_CREDIT,
       amountType: AmountType.CREDIT,
       description: "payout for shows watched",
-      unit: "SECOND",
+      unit: "second",
       rounding: RoundingType.FLOOR,
       pricesInCurrency: [
         {

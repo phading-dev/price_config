@@ -19,7 +19,7 @@ TEST_RUNNER.run({
               productID: ProductID.SHOW,
               amountType: AmountType.DEBIT,
               description: "shows watched",
-              unit: "SECOND",
+              unit: "second",
               rounding: RoundingType.CEIL,
               currency: "USD",
               amount: 1,
