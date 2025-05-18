@@ -8,6 +8,8 @@ export let CONFIG: PriceConfig = {
       productID: ProductID.STORAGE,
       amountType: AmountType.DEBIT,
       description: "storage",
+      unit: "MIB_HOUR",
+      rounding: RoundingType.CEIL,
       pricesInCurrency: [
         {
           currency: "USD",
@@ -15,8 +17,6 @@ export let CONFIG: PriceConfig = {
             {
               amount: 15,
               divideBy: 10 * 1024 * 30 * 24, // 10 GiB per month (30 days)
-              unit: "MIB_HOUR",
-              rounding: RoundingType.CEIL,
               startMonth: "1970-01",
               endMonth: "9999-12",
             },
@@ -29,6 +29,8 @@ export let CONFIG: PriceConfig = {
       productID: ProductID.UPLOAD,
       amountType: AmountType.DEBIT,
       description: "upload",
+      unit: "MIB",
+      rounding: RoundingType.CEIL,
       pricesInCurrency: [
         {
           currency: "USD",
@@ -36,8 +38,6 @@ export let CONFIG: PriceConfig = {
             {
               amount: 12,
               divideBy: 1024, // 1 GiB
-              rounding: RoundingType.CEIL,
-              unit: "MIB",
               startMonth: "1970-01",
               endMonth: "9999-12",
             },
@@ -50,6 +50,8 @@ export let CONFIG: PriceConfig = {
       productID: ProductID.NETWORK,
       amountType: AmountType.DEBIT,
       description: "network delivery",
+      unit: "MIB",
+      rounding: RoundingType.CEIL,
       pricesInCurrency: [
         {
           currency: "USD",
@@ -57,8 +59,6 @@ export let CONFIG: PriceConfig = {
             {
               amount: 0,
               divideBy: 1024, // 1 GiB
-              rounding: RoundingType.CEIL,
-              unit: "MIB",
               startMonth: "1970-01",
               endMonth: "9999-12",
             },
@@ -70,15 +70,15 @@ export let CONFIG: PriceConfig = {
       productID: ProductID.SHOW,
       amountType: AmountType.DEBIT,
       description: "shows watched",
+      unit: "SECOND",
+      rounding: RoundingType.CEIL,
       pricesInCurrency: [
         {
           currency: "USD",
           pricesInMonth: [
             {
-              amount: 10,
+              amount: 1,
               divideBy: 10 * 3600, // 10 hours
-              rounding: RoundingType.CEIL,
-              unit: "SECOND",
               startMonth: "1970-01",
               endMonth: "9999-12",
             },
@@ -90,15 +90,15 @@ export let CONFIG: PriceConfig = {
       productID: ProductID.SHOW_CREDIT,
       amountType: AmountType.CREDIT,
       description: "payout for shows watched",
+      unit: "SECOND",
+      rounding: RoundingType.FLOOR,
       pricesInCurrency: [
         {
           currency: "USD",
           pricesInMonth: [
             {
               amount: 8,
-              divideBy: 10 * 3600, // 10 hours
-              rounding: RoundingType.FLOOR,
-              unit: "SECOND",
+              divideBy: 100 * 3600, // 100 hours
               startMonth: "1970-01",
               endMonth: "9999-12",
             },

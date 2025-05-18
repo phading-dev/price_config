@@ -9,8 +9,8 @@ TEST_RUNNER.run({
     {
       name: "Ceil",
       execute: () => {
-        let price = calculateMoney(ProductID.SHOW, "USD", "2024-10", 80000);
-        assertThat(price.amount, eq(23), "cent");
+        let price = calculateMoney(ProductID.SHOW, "USD", "2024-10", 800000);
+        assertThat(price.amount, eq(23), "amount");
       },
     },
     {
@@ -20,9 +20,9 @@ TEST_RUNNER.run({
           ProductID.SHOW_CREDIT,
           "USD",
           "2024-10",
-          800000,
+          8000000,
         );
-        assertThat(price.amount, eq(177), "cent");
+        assertThat(price.amount, eq(177), "amount");
       },
     },
   ],

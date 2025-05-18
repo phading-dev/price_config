@@ -32,10 +32,10 @@ export function resolvePrice(
     productID: priceOfProduct.productID,
     amountType: priceOfProduct.amountType,
     description: priceOfProduct.description,
+    unit: priceOfProduct.unit,
+    rounding: priceOfProduct.rounding,
     currency: priceInCurrency.currency,
     amount: priceInMonth.amount,
     divideBy: priceInMonth.divideBy,
-    rounding: priceInMonth.rounding,
-    unit: priceInMonth.unit,
   };
 }
